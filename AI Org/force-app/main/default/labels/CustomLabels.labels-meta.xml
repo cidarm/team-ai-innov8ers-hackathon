@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>Chat_GPT_End_Point</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Chat GPT End Point</shortDescription>
+        <value>https://api.openai.com/v1/chat/completions</value>
+    </labels>
+    <labels>
+        <fullName>Chat_GPT_Key</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Chat GPT Key</shortDescription>
+        <value>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</value>
+    </labels>
+</CustomLabels>
