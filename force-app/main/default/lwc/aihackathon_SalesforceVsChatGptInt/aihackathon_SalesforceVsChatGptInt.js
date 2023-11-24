@@ -1,8 +1,7 @@
-import { LightningElement,api,track } from 'lwc';
-// importing Custom Label
-import CHAT_GPT_EP from '@salesforce/label/c.Chat_GPT_End_Point';
-import CHAT_GPT_KEY from '@salesforce/label/c.Chat_GPT_Key';
+import { LightningElement,api,track } from 'lwc';;
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+
+import getResponseToPrompt from '@salesforce/apex/OpenAIAPIService.getResponseToPrompt';
 
 export default class Aihackathon_SalesforceVsChatGptInt extends LightningElement {
 // Sample question
@@ -39,30 +38,8 @@ async getGPTResponse() {
 
     try {
         // Preparing request , header and getting response
-        const response = await fetch(this.label.CHAT_GPT_EP, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer '+this.label.CHAT_GPT_KEY // Replace YOUR_API_KEY with your actual API key
-            },
-            body: JSON.stringify({
-                messages: [{
-                    role: 'user',
-                    content: this.question
-                }],
-                model: 'gpt-3.5-turbo'
-            })
-        });
-        
-        // if response is 200 ok 
-        if (response.ok) {
-            const result = await response.json();
-            this.data=result;
-            console.log(this.data);
-            this.message=this.data.choices[0].message.content;
-            this.isLoading = false;
-        }
-            
+        resp = await getResponseToPrompt(this.question);
+        this.message = resp.choices[0].message.content;
     }catch(error) {
         this.dispatchEvent(new ShowToastEvent({
             title: 'ERROR!!!',

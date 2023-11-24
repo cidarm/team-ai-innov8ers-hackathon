@@ -15,5 +15,5 @@
         "**/.exchange_modules_tmp": true,
         ".mule": true
     },
-    "vlocity.sfdxUsername": "ai-innov8rs-staging"
+    "vlocity.sfdxUsername": "commscloud-trial"
 }
