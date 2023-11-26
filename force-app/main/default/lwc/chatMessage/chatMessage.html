@@ -1,0 +1,12 @@
+<template>
+    <li class="slds-chat-listitem" lwc:ref="messageListItem">
+        <div class="slds-chat-message">
+          <div class="slds-chat-message__body">
+            <div class="slds-chat-message__text" lwc:ref="messageBody">
+              <span>{message}</span>
+            </div>
+            <div class="slds-chat-message__meta" aria-label={authorLabel}>{authorLabel}</div>
+          </div>
+        </div>
+    </li>
+</template>
