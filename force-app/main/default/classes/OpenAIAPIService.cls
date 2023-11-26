@@ -1,13 +1,15 @@
 public with sharing class OpenAIAPIService {
+    static OpenAI_API_Setting__mdt openAISetting = OpenAI_API_Setting__mdt.getInstance('Chat_Completions_V1');
+
     @AuraEnabled
     public static Response getResponseToPrompt(String prompt){
         //Create Request
         HttpRequest req = new HttpRequest();
-        req.setEndpoint('callout:OpenAIAPI/v1/chat/completions');
+        req.setEndpoint('callout:OpenAIAPI' + openAISetting.Endpoint__c);
         req.setMethod('POST');
         //req.setBody('{messages: [{role: "user", content: "' + prompt + '"}], model: "gpt-3.5-turbo"}');
         Message msg = new Message('user', prompt);
-        Request reqPayload = new Request(new List<Message>{msg}, 'gpt-3.5-turbo');
+        Request reqPayload = new Request(new List<Message>{msg}, openAISetting.Model__c);
         req.setBody(JSON.serialize(reqPayload));
 
         //Send request
