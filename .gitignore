@@ -1,3 +1,6 @@
 # SFDX
 .sf/
 .sfdx/
+.vscode/*
+.pmdCache
+.localdevserver/*
