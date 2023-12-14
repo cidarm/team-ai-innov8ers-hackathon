@@ -5,9 +5,25 @@ import apexGPTresponse from '@salesforce/apex/AIConnectAPIService.getPromptRes'
 
 export default class AiTestPrompt extends LightningElement {
     //sample question
+title = 'Query Builder';
+textAreaFormats = [
+    'font',
+    'size',
+    'bold',
+    'italic',
+    'underline',
+    'list',
+    'indent',
+    'align',
+    'link',
+    'image',
+    'clean',
+    'table',
+    'header',
+];
 @api question= "Generate Soql query where product price is greater than $200";
 isLoading = false;
-message;
+@api message;
 isChange = true;
 
 //handle click of chanage of text

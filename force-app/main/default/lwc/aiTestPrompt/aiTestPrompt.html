@@ -1,24 +1,36 @@
 <template>
-        <lightning-card title="Query Generator" icon-name="standard:account">
+        <lightning-card title={title} icon-name="standard:ai_accelerator_card">
                 <!--Generator interface-->
-                <div class="slds-grid slds-gutters">
-                    <div class="slds-col slds-size_2-of-3">
+
+                 <!--   <div class="slds-col slds-size_2-of-3">
                         <lightning-input style="margin-left:20px" type="string" value={question} onchange={handleOnChange}></lightning-input>&nbsp;&nbsp;&nbsp;
-                    </div>
-                    <div class="slds-col slds-size_1-of-3">
-                        <br/>
-                        <lightning-button class="slds-button" variant="brand" label="Generate" title="Primary action" onclick={handleOnClick} ></lightning-button>
-                   </div>
-                </div>
+                    </div>-->
+                    <lightning-button
+                    variant="brand" 
+                    slot="actions"
+                    label="Generate" 
+                    title="Primary action" 
+                    onclick={handleOnClick} 
+                    icon-name="utility:einstein"
+                    icon-position="right">
+                    </lightning-button>
+                    <lightning-textarea
+                        value={question}
+                        placeholder="Enter GPT prompt"
+                        onchange={handleOnChange}
+                        class="slds-var-m-left_xx-small slds-var-m-right_xxx-small slds-var-m-bottom_xx-small"
+                        >
+                    </lightning-textarea>
+        </lightning-card>
                          <!--Response interface-->
-        <div class="slds-card_header slds-grid">  
+        <div class="slds-card__header slds-grid">  
         </div>
-        <div style="margin:20px;" if:false={isLoading} class="slds-card_body">
+        <div style="margin:20px;" if:false={isLoading} class="slds-card__body">
             {message}
         </div>
-        <div if:true={isLoading} class="slds-card_body">
+        <div if:true={isLoading} class="slds-card__body">
             <lightning-spinner alternative-text="Loading..." variant="brand">               
             </lightning-spinner>
         </div>
-        </lightning-card>
+
 </template>
